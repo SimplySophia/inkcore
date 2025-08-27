@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+:root {
+  /* Brand Colors */
+  --color-primary: #9333EA;   /* Deep Purple */
+  --color-secondary: #14B8A6; /* Cyan/Teal */
+  --color-accent: #FACC15;    /* Yellow-Gold */
+
+  /* Background & Text */
+  --color-background: #0F1115; /* Slate/Dark Navy */
+  --color-surface: #1E293B;    /* Slightly lighter surface for cards/sections */
+  --color-text: #4c4e50;       /* Almost white for readability */
+  --color-text-muted: #9CA3AF; /* Muted Gray for secondary text */
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Utility classes */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+/* Surfaces & Muted */
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
