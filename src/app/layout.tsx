@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+//import Navbar from "@/app/components/landing/Navbar";
+//import Footer from "@/app/components/landing/Footer";
 
 
 export const metadata: Metadata = {
@@ -15,13 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body
-        className="overflow-x-hidden"
+        className="overflow-x-hidden background-[var(--color-white)]"
       >
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

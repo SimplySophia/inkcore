@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/app/components/landing/ui/card";
 import { Zap, Shield, Users } from "lucide-react";
 
 const features = [
@@ -26,7 +26,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative w-full py-12 px-6 md:px-12 lg:px-20 bg-gray-200"
+      className="relative w-full py-20 px-6 md:px-12 lg:px-20 bg-white"
     >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2
@@ -35,7 +35,11 @@ export default function Features() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"
         >
-          Why Choose <span className="text-[#9333EA]">InkCore</span>?
+          Why Choose{" "}
+          <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
+            InkCore
+          </span>
+          ?
         </motion.h2>
         <p className="text-base md:text-lg text-gray-600 max-w-xl mx-auto">
           Sleek, secure, and easy-to-use tools built for creators and businesses.
@@ -50,10 +54,10 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
           >
-            <Card className="group bg-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl border border-gray-200">
+            <Card className="group bg-gray-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl border border-gray-200">
               <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 group-hover:bg-[#9333EA] transition">
-                  <div className="group-hover:text-white transition">{feature.icon}</div>
+                <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-md group-hover:scale-110 transition">
+                  {feature.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-sm text-gray-600">{feature.description}</p>

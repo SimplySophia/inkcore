@@ -10,7 +10,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-6xl w-[90%] h-16 flex items-center justify-between px-6 rounded-full backdrop-blur-md">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-6xl w-[90%] h-16 flex items-center justify-between px-6 rounded-full backdrop-blur-md bg-white/90 shadow">
       {/* Logo Section */}
       <div className="flex items-center space-x-2">
         <Image 
@@ -46,28 +46,28 @@ export default function Navbar() {
         >
           <span className="font-semibold">Resources</span>
           {open ? (
-            <ChevronUp size={16} className="mt-[2px]" />
+            <ChevronUp size={16} className="text-gray-700" />
           ) : (
-            <ChevronDown size={16} className="mt-[2px]" />
+            <ChevronDown size={16} className="text-gray-700" />
           )}
 
           {open && (
-            <div className="absolute top-10 left-0 bg-white text-[#1E293B] shadow-2xl  rounded-lg py-2 w-40">
+            <div className="absolute top-10 left-0 bg-white text-[#1E293B] shadow-2xl rounded-lg py-2 w-40">
               <Link
                 href="#docs"
-                className="block px-4 py-2 hover:bg-gray-300 transition"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Documentation
               </Link>
               <Link
                 href="#guides"
-                className="block px-4 py-2 hover:bg-gray-300 transition"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Guides
               </Link>
               <Link
                 href="#blog"
-                className="block px-4 py-2 hover:bg-gray-300 transition"
+                className="block px-4 py-2 hover:bg-gray-100 transition"
               >
                 Blog
               </Link>
