@@ -1,107 +1,109 @@
 "use client";
 
-import { Book, Video, FileText, Link2, ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { BookOpen, FileText, Youtube, Download, Link as LinkIcon } from "lucide-react";
 
-const resources = [
-  {
-    title: "AI Blogging Guide",
-    description: "Best practices for writing blogs with AI assistance.",
-    icon: FileText,
-    links: [
-      { label: "Full Guide PDF", url: "/docs/ai-blogging-guide.pdf" },
-      { label: "Quick Checklist", url: "/docs/ai-checklist.pdf" },
-    ],
-  },
-  {
-    title: "Video Tutorials",
-    description: "Step-by-step walkthroughs for AI-powered content creation.",
-    icon: Video,
-    links: [
-      { label: "YouTube Playlist", url: "https://youtube.com/playlist?list=abc" },
-      { label: "Intro Video", url: "https://youtube.com/watch?v=xyz" },
-    ],
-  },
-  {
-    title: "Content Strategy eBook",
-    description: "Plan and scale your content using AI tools.",
-    icon: Book,
-    links: [
-      { label: "Download eBook", url: "/ebooks/ai-content-strategy.pdf" },
-    ],
-  },
-  {
-    title: "Useful Links",
-    description: "Curated AI tools and references for creators.",
-    icon: Link2,
-    links: [
-      { label: "AI Tools Directory", url: "https://aitools.com" },
-      { label: "Blog Ideas Generator", url: "https://bloggen.ai" },
-    ],
-  },
-];
-
-export default function Resources() {
+export default function ResourcesPage() {
   return (
-    <div className="bg-gray-50 shadow-sm border border-gray-200 rounded-2xl p-6">
-      <motion.h2
-        className="text-xl font-semibold text-gray-700 mb-4"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+    <div className="p-6 max-w-4xl mx-auto">
+      {/* Page Title */}
+      <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent mb-6">
         Resources
-      </motion.h2>
+      </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {resources.map((res, i) => (
-          <motion.div
-            key={i}
-            className="p-4 rounded-xl bg-white shadow hover:shadow-lg border border-gray-100 flex flex-col gap-3 relative overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-          >
-            {/* Glow */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-indigo-500/10 to-cyan-400/10"
-              animate={{ opacity: [0, 0.5, 0] }}
-              transition={{ repeat: Infinity, duration: 3, delay: i * 0.5 }}
-            />
-
-            {/* Icon */}
-            <motion.div
-              className="p-2 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-lg text-white z-10 w-fit"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
+      <div className="space-y-6">
+        {/* Section: AI Blogging Guide */}
+        <section className="bg-white rounded-2xl shadow p-5">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-purple-500" />
+            AI Blogging Guide
+          </h2>
+          <p className="text-sm text-gray-600 mb-3">
+            Best practices for writing blogs with AI assistance.
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              href="#"
+              className="px-3 py-2 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-600 font-medium transition"
             >
-              <res.icon className="w-5 h-5" />
-            </motion.div>
+              Full Guide PDF
+            </Link>
+            <Link
+              href="#"
+              className="px-3 py-2 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-600 font-medium transition"
+            >
+              Quick Checklist
+            </Link>
+          </div>
+        </section>
 
-            {/* Text */}
-            <div className="z-10">
-              <h3 className="font-medium text-gray-800">{res.title}</h3>
-              <p className="text-sm text-gray-600">{res.description}</p>
-            </div>
+        {/* Section: Video Tutorials */}
+        <section className="bg-white rounded-2xl shadow p-5">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+            <Youtube className="h-5 w-5 text-red-500" />
+            Video Tutorials
+          </h2>
+          <p className="text-sm text-gray-600 mb-3">
+            Step-by-step walkthroughs for AI-powered content creation.
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              href="#"
+              className="px-3 py-2 bg-red-50 hover:bg-red-100 rounded-lg text-sm text-red-600 font-medium transition"
+            >
+              YouTube Playlist
+            </Link>
+            <Link
+              href="#"
+              className="px-3 py-2 bg-red-50 hover:bg-red-100 rounded-lg text-sm text-red-600 font-medium transition"
+            >
+              Intro Video
+            </Link>
+          </div>
+        </section>
 
-            {/* Links */}
-            <div className="z-10 mt-2 flex flex-col gap-1">
-              {res.links.map((link, idx) => (
-                <Link
-                  key={idx}
-                  href={link.url}
-                  target="_blank"
-                  className="text-sm text-indigo-600 hover:underline flex items-center gap-1"
-                >
-                  {link.label}
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+        {/* Section: Content Strategy eBook */}
+        <section className="bg-white rounded-2xl shadow p-5">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+            <FileText className="h-5 w-5 text-cyan-500" />
+            Content Strategy eBook
+          </h2>
+          <p className="text-sm text-gray-600 mb-3">
+            Plan and scale your content using AI tools.
+          </p>
+          <Link
+            href="#"
+            className="inline-flex items-center gap-2 px-3 py-2 bg-cyan-50 hover:bg-cyan-100 rounded-lg text-sm text-cyan-600 font-medium transition"
+          >
+            <Download className="h-4 w-4" />
+            Download eBook
+          </Link>
+        </section>
+
+        {/* Section: Useful Links */}
+        <section className="bg-white rounded-2xl shadow p-5">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+            <LinkIcon className="h-5 w-5 text-green-500" />
+            Useful Links
+          </h2>
+          <p className="text-sm text-gray-600 mb-3">
+            Curated AI tools and references for creators.
+          </p>
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              href="#"
+              className="px-3 py-2 bg-green-50 hover:bg-green-100 rounded-lg text-sm text-green-600 font-medium transition"
+            >
+              AI Tools Directory
+            </Link>
+            <Link
+              href="#"
+              className="px-3 py-2 bg-green-50 hover:bg-green-100 rounded-lg text-sm text-green-600 font-medium transition"
+            >
+              Blog Ideas Generator
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );
