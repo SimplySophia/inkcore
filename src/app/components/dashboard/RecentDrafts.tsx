@@ -2,6 +2,7 @@
 
 import { FileText, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 type Draft = {
   id: string;
@@ -32,6 +33,8 @@ const recentDrafts: Draft[] = [
 ];
 
 export default function RecentDrafts() {
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
   return (
     <div className="bg-gray-50 rounded-2xl shadow-lg p-5">
       {/* Header */}
@@ -52,7 +55,7 @@ export default function RecentDrafts() {
         {recentDrafts.map((draft) => (
           <li
             key={draft.id}
-            className="flex items-center justify-between bg-white rounded-lg px-3 py-2 shadow-sm hover:shadow-md transition"
+            className="relative flex items-center justify-between bg-white rounded-lg px-3 py-2 shadow-sm hover:shadow-md transition"
           >
             <div className="flex items-center gap-3">
               <FileText className="h-5 w-5 text-cyan-500 drop-shadow-sm" />
@@ -66,9 +69,35 @@ export default function RecentDrafts() {
                 <p className="text-xs text-gray-500">Updated {draft.updatedAt}</p>
               </div>
             </div>
-            <button className="p-1 rounded-md hover:bg-gray-100 transition">
-              <MoreHorizontal className="h-5 w-5 text-gray-400" />
-            </button>
+
+            {/* Dots Menu */}
+            <div className="relative">
+              <button
+                className="p-1 rounded-md hover:bg-gray-100 transition"
+                onClick={() =>
+                  setOpenMenu(openMenu === draft.id ? null : draft.id)
+                }
+              >
+                <MoreHorizontal className="h-5 w-5 text-gray-400" />
+              </button>
+
+              {openMenu === draft.id && (
+                <div className="absolute right-0 mt-2 w-28 bg-white border rounded-lg shadow-lg py-1 z-10">
+                  <Link
+                    href={`/dashboard/drafts/${draft.id}/edit`}
+                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => alert(`Delete draft ${draft.id}`)}
+                    className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100"
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
           </li>
         ))}
       </ul>
