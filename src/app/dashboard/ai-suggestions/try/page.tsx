@@ -8,16 +8,26 @@ export default function TryAISuggestionPage() {
   const searchParams = useSearchParams();
   const topic = searchParams.get("topic") || "";
   const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
-  // Auto-fill the input with topic from query
+  // Auto-fill animation for topic
   useEffect(() => {
     if (topic) {
-      setInputValue(topic);
+      setIsTyping(true);
+      let i = 0;
+      const typing = setInterval(() => {
+        setInputValue(topic.slice(0, i + 1));
+        i++;
+        if (i === topic.length) {
+          clearInterval(typing);
+          setIsTyping(false);
+        }
+      }, 80); // typing speed
     }
   }, [topic]);
 
   const handleGenerate = () => {
-    // Replace this with actual AI generation API call
+    // Replace with actual AI generation API call
     alert(`Generating content for: ${inputValue}`);
   };
 
@@ -33,9 +43,17 @@ export default function TryAISuggestionPage() {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Enter your idea..."
-          className="flex-1 border border-gray-100"
+          className={`flex-1 border border-gray-100 transition-all duration-300 ${
+            isTyping ? "animate-pulse" : ""
+          }`}
         />
-        <Button onClick={handleGenerate} className="bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 text-white rounded-xl shadow-md">Generate</Button>
+        <Button
+          onClick={handleGenerate}
+          disabled={!inputValue.trim()}
+          className="bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 text-white rounded-xl shadow-md hover:scale-105 transition-transform"
+        >
+          Generate
+        </Button>
       </div>
     </div>
   );
