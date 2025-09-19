@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Usage() {
   return (
-    <section className="w-full min-h-screen relative bg-white py-20 px-8 sm:px-16 lg:px-24">
+    <section className="w-full min-h-screen relative bg-gray-100 py-20 px-8 sm:px-16 lg:px-24">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
         
         {/* Left: Steps */}
@@ -56,26 +56,14 @@ export default function Usage() {
         </div>
 
         {/* Right: Phone Illustration */}
-        <div className="flex-1 flex justify-center relative">
-          <Image 
-            src="/images/saas ph2.png" 
-            alt="App Usage Demo" 
-            className="w-[280px] md:w-[340px] lg:w-[400px] h-auto drop-shadow-2xl"
-            width={400}
-            height={400}
-            priority
-          />
-          <div className="absolute top-0 right-10 md:top-5 md:right-10 lg:top-10 lg:right-20">
-            <Image 
+           <Image 
               src="/images/phone.png" 
               alt="App Usage Demo" 
-              className="w-[200px] md:w-[260px] lg:w-[320px] h-auto drop-shadow-2xl"
+              className="w-[200px] md:w-[400px] lg:w-[480px] h-auto rounded-2xl shadow-lg"
               width={300}
-              height={200}
+              height={300}
               priority
             />
-          </div>
-        </div>
       </div>
     </section>
   );

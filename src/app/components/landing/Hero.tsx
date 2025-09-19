@@ -52,7 +52,7 @@ export default function Hero() {
           <img 
             src="/images/saas lap.png" 
             alt="App Usage Demo" 
-            className="w-[280px] md:w-[340px] lg:w-[400px] h-auto drop-shadow-2xl"
+            className="w-[300px] md:w-[360px] lg:w-[420px] h-auto drop-shadow-2xl rounded-xl"
             width={400}
             height={400}
           />
