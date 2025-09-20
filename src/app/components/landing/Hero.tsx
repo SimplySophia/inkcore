@@ -34,7 +34,7 @@ export default function Hero() {
             <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-6 py-3 rounded-xl shadow-lg hover:opacity-90 transition">
               Get Started
             </Button>
-            <Link href="#features">
+            <Link href="/dashboard">
               <Button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl shadow-lg">
                 Learn More
               </Button>
