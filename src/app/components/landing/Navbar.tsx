@@ -77,9 +77,11 @@ export default function Navbar() {
       </div>
 
       {/* CTA */}
-      <Button className="bg-[#162749] hover:bg-[#F59E0B] text-[#FAFAFA] font-semibold rounded-xl px-4 transition-transform duration-300 hover:scale-105">
-        Get Started
-      </Button>
+      <Link href="/dashboard">
+        <Button className="bg-[#162749] hover:bg-[#F59E0B] text-[#FAFAFA] font-semibold rounded-xl px-4 transition-transform duration-300 hover:scale-105">
+          Get Started
+        </Button>
+      </Link>
     </nav>
   );
 }

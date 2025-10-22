@@ -26,7 +26,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative w-full py-20 px-6 md:px-12 lg:px-20 bg-white"
+      className="relative w-full min-h-screen py-20 px-6 md:px-12 lg:px-20 bg-white"
     >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2

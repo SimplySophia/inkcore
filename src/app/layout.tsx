@@ -5,8 +5,8 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: "InkFlow",
-  description: "Ai powered Saas Product for Blogs",
+  title: "InkCore",
+  description: "Ai powered Saas Product for Blogs and media contents",
 };
 
 export default function RootLayout({
