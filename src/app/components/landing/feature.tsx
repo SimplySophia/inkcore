@@ -26,14 +26,15 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative w-full min-h-screen py-20 px-6 md:px-12 lg:px-20 bg-white"
+      className="relative w-full min-h-screen py-20 px-6 md:px-12 lg:px-20 
+                 bg-white dark:bg-[#0b0b0f] transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"
+          className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3"
         >
           Why Choose{" "}
           <span className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
@@ -41,7 +42,7 @@ export default function Features() {
           </span>
           ?
         </motion.h2>
-        <p className="text-base md:text-lg text-gray-600 max-w-xl mx-auto">
+        <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
           Sleek, secure, and easy-to-use tools built for creators and businesses.
         </p>
       </div>
@@ -54,13 +55,25 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
           >
-            <Card className="group bg-gray-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl border border-gray-200">
+            <Card
+              className="group bg-gray-50 dark:bg-[#111] hover:shadow-xl hover:-translate-y-1 
+                         transition-all duration-300 rounded-xl border border-gray-200 
+                         dark:border-gray-800"
+            >
               <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="mb-4 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-md group-hover:scale-110 transition">
+                <div
+                  className="mb-4 flex items-center justify-center w-12 h-12 rounded-full 
+                             bg-gradient-to-r from-purple-500 to-cyan-500 text-white shadow-md 
+                             group-hover:scale-110 transition"
+                >
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {feature.description}
+                </p>
               </CardContent>
             </Card>
           </motion.div>

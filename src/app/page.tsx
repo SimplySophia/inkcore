@@ -4,7 +4,7 @@ import Footer from "./components/landing/Footer";
 
 export default function Home() {
   return (
-    <div className="font-sans bg-offwhite text-gray-800">
+    <div className="font-sans bg-offwhite dark:text-white dark:bg-[#0a0a0a] text-gray-800">
       {/* Navbar always fixed */}
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />

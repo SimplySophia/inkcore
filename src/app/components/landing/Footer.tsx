@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { X } from "lucide-react";
-
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-900 text-gray-300 py-12 px-6 md:px-12 lg:px-20">

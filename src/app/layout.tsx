@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "./components/providers/ThemeProvider";
 //import Navbar from "@/app/components/landing/Navbar";
 //import Footer from "@/app/components/landing/Footer";
 
@@ -15,11 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className="overflow-x-hidden background-[var(--color-white)]"
       >
-        {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>      
       </body>
     </html>
   );
