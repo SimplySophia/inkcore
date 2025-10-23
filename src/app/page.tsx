@@ -13,7 +13,7 @@ export default function Home() {
       <main className="pt-28 space-y-28">
         <Landing />
       </main>
-      <div className="mt-20">
+      <div className="">
         {/* Footer */}
         <Footer />
       </div>

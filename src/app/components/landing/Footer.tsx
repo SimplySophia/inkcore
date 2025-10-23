@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { X } from "lucide-react";
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-900 text-gray-300 py-12 px-6 md:px-12 lg:px-20">
+    <footer className="w-full bg-gray-600 text-gray-300 py-12 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
         {/* Brand / Logo */}
         <div className="flex flex-col items-start">
@@ -15,7 +15,7 @@ export default function Footer() {
                   height={150} 
                   className="rounded-md"
                 />
-          <p className="text-gray-400">
+          <p className="text-gray-300">
             Building solutions that make life easier, one project at a time.
           </p>
           <div className="flex gap-4 mt-4">
@@ -61,8 +61,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} YourBrand. All rights reserved.
+      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-300">
+        © {new Date().getFullYear()} InkCore. All rights reserved.
       </div>
     </footer>
   );

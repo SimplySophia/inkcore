@@ -27,7 +27,7 @@ export default function Features() {
     <section
       id="features"
       className="relative w-full min-h-screen py-20 px-6 md:px-12 lg:px-20 
-                 bg-white dark:bg-[#0b0b0f] transition-colors duration-500"
+                 bg-gray-50 dark:bg-[#0b0b0f] transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2
@@ -56,7 +56,7 @@ export default function Features() {
             transition={{ duration: 0.5, delay: index * 0.15 }}
           >
             <Card
-              className="group bg-gray-50 dark:bg-[#111] hover:shadow-xl hover:-translate-y-1 
+              className="group bg-gray-100 dark:bg-[#111] hover:shadow-xl hover:-translate-y-1 
                          transition-all duration-300 rounded-xl border border-gray-200 
                          dark:border-gray-800"
             >
