@@ -94,9 +94,9 @@ export default function Usage() {
           className="flex justify-center md:justify-end w-full md:w-auto"
         >
           <Image
-            src="/images/phone.png"
+            src="/images/phone.jpg"
             alt="App Usage Demo"
-            className="w-[200px] md:w-[400px] lg:w-[480px] h-auto rounded-2xl 
+            className="w-[100px] md:w-[300px] lg:w-[330px] h-auto rounded-2xl 
                        shadow-lg dark:shadow-[0_0_30px_rgba(147,51,234,0.25)] 
                        transition-shadow duration-500"
             width={300}
@@ -104,16 +104,6 @@ export default function Usage() {
             priority
           />
         </motion.div>
-
-        {/* Gradient Rainbow Glow */}
-      <motion.div
-        initial={{ opacity: 0.2 }}
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[60%] 
-        bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400
-        opacity-30 blur-3xl rounded-t-[50%] pointer-events-none"
-      />
       </div>
     </section>
   );

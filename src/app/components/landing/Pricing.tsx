@@ -4,7 +4,7 @@ export default function Pricing() {
   return (
     <section
       className="relative w-full min-h-screen py-20 px-8 sm:px-16 lg:px-24 
-                 bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-500"
+                 bg-gray-50 dark:bg-[#0b0b0f] transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
