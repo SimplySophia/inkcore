@@ -5,7 +5,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export default function Topbar() {
   return (
-    <header className="w-full flex items-center justify-between px-6 py-3 border-b border-gray-200 bg-white shadow-sm">
+    <header className="w-full max-w-8xl mx-auto flex items-center justify-end px-6 py-3 gap-6 border-b border-gray-200 bg-white shadow-sm">
       {/* Search Bar */}
       <div className="flex-1 w-full max-w-md">
         <div className="relative">

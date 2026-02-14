@@ -29,7 +29,7 @@ export default function SignupForm() {
 
       toast.success("Account created successfully");
 
-      window.location.href = "/signin";
+      window.location.href = "/register";
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "Signup failed. Try again.";
@@ -56,13 +56,13 @@ export default function SignupForm() {
                     <User className="absolute inset-y-0 left-3 my-auto h-5 w-5 text-gray-500" />
                     <input
                       type="text"
-                      placeholder="Name"
-                      {...register("name")}
+                      placeholder="Full Name"
+                      {...register("fullname")}
                        className="w-full pl-10 pr-4 py-2 rounded-lg bg-[#E9D5FF] text-[#120C1A] outline-none"    
                     />
                   </div>
-                  {errors.name && (
-                    <p className="text-red-500 text-sm">{errors.name.message}</p>
+                  {errors.fullname && (
+                    <p className="text-red-500 text-sm">{errors.fullname.message}</p>
                   )}
               </div>
 

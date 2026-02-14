@@ -1,29 +1,22 @@
-'use client';
-
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import WelcomeCard from '../components/dashboard/WelcomeCard';
-import QuickActions from '../components/dashboard/QuickActions';
-import RecentDrafts from '../components/dashboard/RecentDrafts';
-import AISuggestions from '../components/dashboard/AISuggestions';
+import QuickActions from "../components/dashboard/QuickActions";
+import RecentDrafts from "../components/dashboard/RecentDrafts";
+import Sidebar from "../components/dashboard/SideBar";
 
 export default function DashboardPage() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease',
-      once: true,
-      anchorPlacement: 'top-bottom',
-    });
-  }, []);
-
   return (
-    <div className='p-6 space-y-6'>
-      <WelcomeCard data-aos="fade-up" />
-      <QuickActions data-aos="fade-up" />
-      <RecentDrafts data-aos="fade-up" />
-      <AISuggestions data-aos="fade-up" />
-    </div>
+    <>
+      <Sidebar />
+      <main className="ml-[280px] min-h-screen bg-background-light">
+        <header className="p-2">
+          <h2 className="text-xl lg:text-2xl font-bold">Welcome to, InkCore</h2>
+          <p className="text-slate-500 mt-2 text-sm">
+            What are we creating today?
+          </p>
+        </header>
+
+        <QuickActions />
+        <RecentDrafts />
+      </main>
+    </>
   );
 }

@@ -1,106 +1,80 @@
 "use client";
 
-import { FileText, MoreHorizontal } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
-
-type Draft = {
-  id: string;
-  title: string;
-  updatedAt: string;
-  href: string;
-};
-
-const recentDrafts: Draft[] = [
-  {
-    id: "1",
-    title: "AI Blog Post: Future of Frontend",
-    updatedAt: "Aug 27, 2025",
-    href: "/dashboard/drafts/1",
-  },
-  {
-    id: "2",
-    title: "Next.js Project Setup Notes",
-    updatedAt: "Aug 25, 2025",
-    href: "/dashboard/drafts/2",
-  },
-  {
-    id: "3",
-    title: "UI Wireframe Ideas",
-    updatedAt: "Aug 20, 2025",
-    href: "/dashboard/drafts/3",
-  },
-];
+import DraftsTable from "./DraftsTable";
+import { ArrowRight } from "lucide-react";
+import { Draft } from "../../../../types/draft";
+import { Atom, BookOpen } from "lucide-react";
+import GenerateDraftModal from "../ai/GenerateDraftModal";
+import { DraftRowProps } from "./DraftRow";
 
 export default function RecentDrafts() {
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
+  // THIS is the missing piece — state
+    const [drafts, setDrafts] = useState<Draft[]>([
+    {
+      id: Math.floor(Math.random() * 1000000),
+      title: "Future of Frontend 2025",
+      category: "Article",
+      date: "Aug 27, 2025",
+      icon: <Atom className="w-6 h-6" />,
+      color: "bg-blue-100 text-blue-600",
+      updatedAt: ""
+    },
+    {
+      id: Math.floor(Math.random() * 1000000),
+      title: "AI Ethics Policy",
+      category: "Article",
+      date: "2 hours ago",
+      icon: <BookOpen className="w-6 h-6" />,
+      color: "bg-purple-100 text-purple-600",
+      updatedAt: ""
+    },
+  ]);
+
+  const handleCreateDraft = (draft: Draft) => {
+    setDrafts((prev) => [draft, ...prev]);
+  };
+
+  const handleEditDraft = (draft: DraftRowProps) => {
+    console.log("Edit draft clicked:", draft);
+    setOpen(true);
+  };
 
   return (
-    <div className="bg-gray-50 rounded-2xl shadow-lg p-5">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent drop-shadow-sm">
-          Recent Drafts
-        </h2>
-        <Link
-          href="/dashboard/drafts"
-          className="text-sm text-gray-500 hover:text-cyan-600 transition"
-        >
-          View All
-        </Link>
-      </div>
+    <>
+      <section>
+        <div className="flex justify-between mb-6 items-center">
+          <h3 className="text-xl font-bold">Recent Drafts</h3>
 
-      {/* Draft List */}
-      <ul className="space-y-3">
-        {recentDrafts.map((draft) => (
-          <li
-            key={draft.id}
-            className="relative flex items-center justify-between bg-white rounded-lg px-3 py-2 shadow-sm hover:shadow-md transition"
+          <button
+            onClick={() => setOpen(true)}
+            className="text-sm text-slate-500 hover:text-slate-900 flex items-center gap-1"
           >
-            <div className="flex items-center gap-3">
-              <FileText className="h-5 w-5 text-cyan-500 drop-shadow-sm" />
-              <div>
-                <Link
-                  href={draft.href}
-                  className="font-medium text-gray-800 hover:text-purple-600 transition"
-                >
-                  {draft.title}
-                </Link>
-                <p className="text-xs text-gray-500">Updated {draft.updatedAt}</p>
-              </div>
-            </div>
+            Generate Draft
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
 
-            {/* Dots Menu */}
-            <div className="relative">
-              <button
-                className="p-1 rounded-md hover:bg-gray-100 transition"
-                onClick={() =>
-                  setOpenMenu(openMenu === draft.id ? null : draft.id)
-                }
-              >
-                <MoreHorizontal className="h-5 w-5 text-gray-400" />
-              </button>
+        {/* PASS STATE HERE */}
+        <DraftsTable
+          drafts={drafts.map((draft) => ({
+            ...draft,
+            date: draft.date,
+            icon: draft.icon,
+            color: draft.color,
+          }))}
+          onEditDraft={handleEditDraft}
+        />
+      </section>
 
-              {openMenu === draft.id && (
-                <div className="absolute right-0 mt-2 w-28 bg-white border rounded-lg shadow-lg py-1 z-10">
-                  <Link
-                    href={`/dashboard/drafts/${draft.id}/edit`}
-                    className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => alert(`Delete draft ${draft.id}`)}
-                    className="w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-gray-100"
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+      {/* CONNECT MODAL */}
+      <GenerateDraftModal
+        open={open}
+        onClose={() => setOpen(false)}
+        onCreate={handleCreateDraft}
+      />
+    </>
   );
 }

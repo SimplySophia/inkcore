@@ -14,7 +14,7 @@ export default function Page() {
 
   useEffect(() => {
     axios
-      .get<User[]>("http://localhost:5000/users") // 👈 axios expects an array of User
+      .get<User[]>("http://localhost:5080/users") // 👈 axios expects an array of User
       .then((res) => setUsers(res.data))
       .catch((err) => console.error(err));
   }, []);

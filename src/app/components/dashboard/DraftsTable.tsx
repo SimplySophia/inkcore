@@ -1,0 +1,60 @@
+"use client";
+
+import DraftRow, { DraftRowProps } from "./DraftRow";
+import { Atom, BookOpen } from 'lucide-react';
+
+
+interface DraftsTableProps {
+  drafts?: DraftRowProps[]; // future API/Supabase data
+  onEditDraft?: (draft: DraftRowProps) => void;
+}
+
+export default function DraftsTable({ drafts, onEditDraft }: DraftsTableProps) {
+  // fallback mock data
+  const mockDrafts: DraftRowProps[] = [
+    {
+      title: "Future of Frontend 2025",
+      category: "Article",
+      date: "Aug 27, 2025",
+      icon: <Atom className="w-6 h-6" />, // placeholder
+      color: "bg-blue-100 text-blue-600",
+    },
+    {
+      title: "AI Ethics Policy",
+      category: "Documentation",
+      date: "2 hours ago",
+      icon: <BookOpen className="w-6 h-6" />, // placeholder
+      color: "bg-purple-100 text-purple-600",
+    },
+  ];
+
+  const displayDrafts = drafts ?? mockDrafts;
+
+  return (
+    <div className="rounded-3xl border overflow-hidden bg-white">
+      <table className="w-full">
+        <thead className="bg-slate-50">
+          <tr>
+            {["Document", "Category", "Last Edited", ""].map((h) => (
+              <th
+                key={h}
+                className="px-8 py-4 text-xs uppercase text-slate-400 text-left"
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {displayDrafts.map((draft, i) => (
+            <DraftRow
+              key={i}
+              {...draft}
+              onEdit={() => onEditDraft?.(draft)}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
