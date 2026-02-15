@@ -8,7 +8,7 @@ export interface DraftRowProps {
   date: string;
   icon: ReactNode;
   color: string;
-  onEdit?: () => void; // optional callback for edit button
+  onEdit?: () => void;
 }
 
 export default function DraftRow({
@@ -21,21 +21,21 @@ export default function DraftRow({
 }: DraftRowProps) {
   return (
     <tr className="hover:bg-slate-50 transition">
-      <td className="px-8 py-5">
-        <div className="flex items-center gap-4">
+      <td className="px-4 sm:px-8 py-3">
+        <div className="flex items-center gap-3 sm:gap-4">
           <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${color}`}>
             {icon}
           </div>
-          <span className="font-semibold">{title}</span>
+          <span className="font-semibold text-sm sm:text-base">{title}</span>
         </div>
       </td>
-      <td className="px-8 py-5">
-        <span className="px-3 py-1 bg-slate-100 rounded-full text-xs">{category}</span>
+      <td className="px-4 sm:px-8 py-3">
+        <span className="px-2 sm:px-3 py-1 bg-slate-100 rounded-full text-xs sm:text-sm">{category}</span>
       </td>
-      <td className="px-8 py-5 text-sm text-slate-500">{date}</td>
-      <td className="px-8 py-5 text-right">
+      <td className="px-4 sm:px-8 py-3 text-sm sm:text-base text-slate-500">{date}</td>
+      <td className="px-4 sm:px-8 py-3 text-right">
         <button
-          className="text-slate-400 hover:text-primary"
+          className="text-slate-400 hover:text-primary transition"
           onClick={onEdit}
         >
           <span className="material-symbols-outlined">edit</span>

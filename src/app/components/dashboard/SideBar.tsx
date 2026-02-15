@@ -1,64 +1,117 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import {
   Home,
-  Folder,
-  Calendar,
-  Activity,
+  Newspaper,
+  FileText,
+  Share2,
   Settings,
-  Edit3,
 } from "lucide-react";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   const navLinks = [
-    { icon: Home, label: "Home" },
-    { icon: Folder, label: "Projects" },
-    { icon: Calendar, label: "Social Planner" },
-    { icon: Activity, label: "Analytics" },
-    { icon: Settings, label: "Settings" },
+    {
+      label: "Home",
+      href: "/dashboard",
+      icon: Home,
+    },
+    {
+      label: "Blog",
+      href: "/dashboard/blog",
+      icon: Newspaper,
+    },
+    {
+      label: "Drafts",
+      href: "/dashboard/drafts",
+      icon: FileText,
+    },
+    {
+      label: "Social",
+      href: "/dashboard/social",
+      icon: Share2,
+    },
+    {
+      label: "Settings",
+      href: "/dashboard/settings",
+      icon: Settings,
+    },
   ];
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-[280px] border-r border-slate-200 bg-white flex flex-col z-50">
-      <div className="py-2 px-6 gap-2">
-        <div className="flex items-center">
-            <Image
-            src="/images/InkCore.png"
-            alt="User"
-            width={200}
-            height={200}
-            className="rounded-full"
-          />            
-        </div>
+    <aside className="fixed left-0 top-0 h-screen w-[70px] md:w-[260px] border-r bg-white flex flex-col z-50 transition-all duration-300">
 
-        <nav className="space-y-1">
-          {navLinks.map(({ icon: Icon, label }) => (
-            <a
+      {/* Logo */}
+      <div className="p-4 flex justify-center md:justify-start">
+        <Image
+          src="/images/InkCore.png"
+          alt="InkCore Logo"
+          width={140}
+          height={140}
+          priority
+          style={{ width: "100px", height: "auto" }}
+        />
+      </div>
+
+      {/* Nav */}
+      <nav className="flex flex-col gap-2 px-2">
+
+        {navLinks.map(({ label, href, icon: Icon }) => {
+          const isActive = pathname === href;
+
+          return (
+            <Link
               key={label}
-              href="#"
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-50 hover:text-slate-900 hover:border-b-2 hover:border-indigo-500 transition"
+              href={href}
+              className={`
+                group relative flex items-center gap-3 px-3 py-3 rounded-xl transition-all
+                ${isActive
+                  ? "bg-indigo-50 text-indigo-600"
+                  : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"}
+              `}
             >
-              <Icon size={18} />
-              {label}
-            </a>
-          ))}
-        </nav>
-      </div>
+              <Icon size={20} />
 
-      <div className="mt-auto p-6">
-        <div className="bg-slate-50 rounded-2xl p-4 border flex items-center gap-3">
-          <Image
-            src="/images/InkCore.png"
-            alt="User"
-            width={70}
-            height={70}
-            className="rounded-full"
-          />
-          <div className="flex-1">
-            <p className="text-sm font-semibold">Alex Rivera</p>
-            <p className="text-xs text-slate-500">alex@inkcore.ai</p>
-          </div>
+              {/* Desktop label */}
+              <span className="hidden md:inline font-medium">
+                {label}
+              </span>
+
+              {/* Mobile tooltip */}
+              <span className="
+                absolute left-14 bg-slate-900 text-white text-xs px-2 py-1 rounded
+                opacity-0 group-hover:opacity-100 transition pointer-events-none
+                md:hidden whitespace-nowrap
+              ">
+                {label}
+              </span>
+            </Link>
+          );
+        })}
+
+      </nav>
+
+      {/* User */}
+      <div className="mt-auto p-4 hidden md:flex items-center gap-3 border-t">
+        <Image
+          src="/images/InkCore.png"
+          alt="User"
+          width={60}
+          height={50}
+          style={{ width: "36px", height: "auto" }}
+          className="rounded-full"
+        />
+        <div>
+          <p className="text-sm font-semibold">Sophia</p>
+          <p className="text-xs text-slate-500">sophia@inkcore.ai</p>
         </div>
       </div>
+
     </aside>
   );
 }

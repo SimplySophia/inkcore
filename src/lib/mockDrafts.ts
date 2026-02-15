@@ -7,6 +7,9 @@ export const initialDrafts: Draft[] = [
     title: "Future of Frontend 2025",
     category: "Article",
     updatedAt: "Aug 27, 2025",
+    color: undefined,
+    icon: undefined,
+    date: undefined
   },
 ];
 
@@ -19,5 +22,8 @@ export function generateMockDraft(params: {
     title: `${params.type} Draft (${params.tone})`,
     category: params.type,
     updatedAt: "Just now",
+    color: undefined,
+    icon: undefined,
+    date: undefined
   };
 }

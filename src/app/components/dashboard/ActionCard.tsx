@@ -1,10 +1,15 @@
-import { ReactNode } from 'react';
+"use client";
+
+import { ReactNode } from "react";
+import { useRouter } from "next/navigation";
 
 interface ActionCardProps {
   title: string;
   subtitle: string;
   icon: ReactNode;
-  gradient?: string;
+  gradient: string;
+  href?: string;
+  onClick?: () => void;
 }
 
 export default function ActionCard({
@@ -12,20 +17,27 @@ export default function ActionCard({
   subtitle,
   icon,
   gradient,
+  href,
+  onClick,
 }: ActionCardProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (onClick) return onClick();
+    if (href) router.push(href);
+  };
+
   return (
     <button
-      className={`relative overflow-hidden p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-xl ${
-        gradient
-          ? `bg-gradient-to-br ${gradient} text-white`
-          : "bg-white border border-slate-200"
-      }`}
+      onClick={handleClick}
+      className={`p-6 rounded-3xl text-white bg-gradient-to-br ${gradient}
+      hover:scale-[1.02] active:scale-[0.98] transition-all text-left`}
     >
-      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-6">
-        <span className="material-symbols-outlined">{icon}</span>
-      </div>
-      <span className="text-lg font-bold block">{title}</span>
-      <span className="text-sm opacity-70">{subtitle}</span>
+      <div className="mb-4">{icon}</div>
+
+      <h3 className="font-semibold text-lg">{title}</h3>
+
+      <p className="text-sm text-white/80">{subtitle}</p>
     </button>
   );
 }

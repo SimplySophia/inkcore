@@ -9,6 +9,9 @@ export type DraftTone =
   | "Bold";
 
 export interface Draft {
+  color: any;
+  icon: any;
+  date: any;
   id: number;
   title: string;
   category: DraftCategory;

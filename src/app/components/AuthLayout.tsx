@@ -37,6 +37,7 @@ export default function AuthLayout({
             alt="InkCore Logo"
             width={280}
             height={160}
+            priority
             className="mx-auto mb-6"
           />
 
